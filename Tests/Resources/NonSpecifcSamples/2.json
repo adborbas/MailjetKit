@@ -1,0 +1,37 @@
+{
+  "Messages": [
+    {
+      "Status": "success",
+      "To": [
+        {
+          "Email": "passenger1@mailjet.com",
+          "MessageUUID": "123",
+          "MessageID": 456,
+          "MessageHref": "https://api.mailjet.com/v3/message/456"
+        },
+        {
+          "Email": "passenger2@mailjet.com",
+          "MessageUUID": "124",
+          "MessageID": 457,
+          "MessageHref": "https://api.mailjet.com/v3/message/457"
+        }
+      ],
+      "Cc": [
+        {
+          "Email": "copilot@mailjet.com",
+          "MessageUUID": "125",
+          "MessageID": 458,
+          "MessageHref": "https://api.mailjet.com/v3/message/458"
+        }
+      ],
+      "Bcc": [
+        {
+          "Email": "air-traffic-control@mailjet.com",
+          "MessageUUID": "126",
+          "MessageID": 459,
+          "MessageHref": "https://api.mailjet.com/v3/message/459"
+        }
+      ]
+    }
+  ]
+}

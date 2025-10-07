@@ -1,0 +1,30 @@
+{
+  "Messages": [
+    {
+      "Errors": [
+        {
+          "ErrorIdentifier": "88b5ca9f-5f1f-42e7-a45e-9ecbad0c285e",
+          "ErrorCode": "send-0003",
+          "StatusCode": 400,
+          "ErrorMessage": "At least \"HTMLPart\", \"TextPart\" or \"TemplateID\" must be provided.",
+          "ErrorRelatedTo": ["HTMLPart", "TextPart"]
+        }
+      ],
+      "Status": "error"
+    },
+    {
+      "Status": "success",
+      "CustomID": "",
+      "To": [
+        {
+          "Email": "passenger2@mailjet.com",
+          "MessageUUID": "cb927469-36fd-4c02-bce4-0d199929a207",
+          "MessageID": 70650219165027410,
+          "MessageHref": "https://api.mailjet.com/v3/REST/message/70650219165027410"
+        }
+      ],
+      "Cc": [],
+      "Bcc": []
+    }
+  ]
+}

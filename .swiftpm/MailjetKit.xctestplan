@@ -1,0 +1,25 @@
+{
+  "configurations" : [
+    {
+      "id" : "EA73CEEA-BBDE-4751-B504-CBA56EC43228",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "performanceAntipatternCheckerEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : false,
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "MailjetKitTests",
+        "name" : "MailjetKitTests"
+      }
+    }
+  ],
+  "version" : 1
+}
