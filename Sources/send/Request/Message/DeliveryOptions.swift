@@ -17,11 +17,11 @@ public struct DeliveryOptions: Sendable, Equatable, Codable {
 
 extension Message {
     public func addHeader(_ name: String, _ value: String) -> Self {
-        var merged = delivery.headers ?? [:]
+        var merged = delivery?.headers ?? [:]
         merged[name] = value
 
         let updatedDelivery = DeliveryOptions(
-            priority: delivery.priority,
+            priority: delivery?.priority,
             headers: merged
         )
 
@@ -29,11 +29,11 @@ extension Message {
     }
 
     public func addHeaders(_ newHeaders: [String: String]) -> Self {
-        var merged = delivery.headers ?? [:]
+        var merged = delivery?.headers ?? [:]
         for (k, v) in newHeaders { merged[k] = v }
 
         let updatedDelivery = DeliveryOptions(
-            priority: delivery.priority,
+            priority: delivery?.priority,
             headers: merged
         )
 
@@ -43,7 +43,7 @@ extension Message {
     public func withPriority(_ priority: Int?) -> Self {
         let updatedDelivery = DeliveryOptions(
             priority: priority,
-            headers: delivery.headers
+            headers: delivery?.headers
         )
 
         return withUpdatedDelivery(updatedDelivery)
