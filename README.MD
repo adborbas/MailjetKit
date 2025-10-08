@@ -5,13 +5,7 @@ Currently supports the `/send` endpoint (v3.1).
 
 ## Overview
 
-**MailjetKit** is a lightweight, type-safe Swift SDK for sending emails using Mailjet’s REST API.  
-It focuses on simplicity, correctness, and modern Swift features such as:
-
-- `async/await`
-- `Codable`-based request/response models
-- Strong typing for messages, recipients, and attachments
-- Fluent, immutable “with/adding” helpers for constructing messages
+**MailjetKit** is a lightweight, type-safe Swift SDK for sending emails using Mailjet’s REST API.
 
 This package is ideal for server-side Swift (e.g. Vapor, Hummingbird, SwiftNIO apps), command-line tools, or macOS/iOS utilities that need to send transactional or templated emails.
 
@@ -71,10 +65,11 @@ let message = Message(
     textPart: "Hello there! This is a plain text email from MailjetKit."
 )
 
-do {
-    let response = try await mailjet.send(message: message)
-    print("Message sent: \(response.status)")
-} catch {
+let response = await mailjet.send(message: message)
+switch response {
+case .success(let value):
+    print("Message sent: \(value.status)")
+case .failure(let error):
     print("Error sending email: \(error)")
 }
 ```
@@ -96,10 +91,11 @@ let htmlMessage = Message(
     )
 )
 
-do {
-    let response = try await mailjet.send(message: htmlMessage)
-    print("✅ Sent successfully: \(response)")
-} catch {
+let response = await mailjet.send(message: htmlMessage)
+switch response {
+case .success(let value):
+    print("✅ Sent successfully: \(value)")
+case .failure(let error):
     print("❌ Failed: \(error)")
 }
 ```
@@ -122,5 +118,5 @@ let templatedMessage = Message(
     )
 )
 
-try await mailjet.send(message: templatedMessage)
+await mailjet.send(message: templatedMessage)
 ```
