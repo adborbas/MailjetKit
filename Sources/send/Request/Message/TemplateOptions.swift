@@ -1,7 +1,7 @@
 import Foundation
 
 public struct TemplateOptions: Sendable, Equatable, Codable {
-    public let templateID: UInt64?
+    public let templateID: UInt64
     public let templateLanguage: Bool?
     public let templateErrorReporting: Recipient?
     public let templateErrorDeliver: Bool?
@@ -16,7 +16,7 @@ public struct TemplateOptions: Sendable, Equatable, Codable {
     }
 
     public init(
-        templateID: UInt64? = nil,
+        templateID: UInt64,
         templateLanguage: Bool? = nil,
         templateErrorReporting: Recipient? = nil,
         templateErrorDeliver: Bool? = nil,

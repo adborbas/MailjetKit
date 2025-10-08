@@ -3,16 +3,16 @@ import Foundation
 public struct Message: Sendable, Equatable, Codable {
     public let envelope: Envelope
     public let content: Content
-    public let template: TemplateOptions
-    public let tracking: Tracking
-    public let delivery: DeliveryOptions
+    public let template: TemplateOptions?
+    public let tracking: Tracking?
+    public let delivery: DeliveryOptions?
     
     public init(
         envelope: Envelope,
         content: Content,
-        template: TemplateOptions = TemplateOptions(),
-        tracking: Tracking = Tracking(),
-        delivery: DeliveryOptions = DeliveryOptions()
+        template: TemplateOptions? = nil,
+        tracking: Tracking? = nil,
+        delivery: DeliveryOptions? = nil
     ) {
         self.envelope = envelope
         self.content = content
@@ -24,9 +24,9 @@ public struct Message: Sendable, Equatable, Codable {
     public func encode(to encoder: Encoder) throws {
         try envelope.encode(to: encoder)
         try content.encode(to: encoder)
-        try template.encode(to: encoder)
-        try tracking.encode(to: encoder)
-        try delivery.encode(to: encoder)
+        if let template { try template.encode(to: encoder) }
+        if let tracking { try tracking.encode(to: encoder) }
+        if let delivery { try delivery.encode(to: encoder) }
     }
     
     public init(from decoder: Decoder) throws {
@@ -41,20 +41,14 @@ public struct Message: Sendable, Equatable, Codable {
     public init(from: Recipient, to: Recipient, subject: String, textPart: String) {
         self.init(
             envelope: Envelope(from: from, to: [to]),
-            content: Content(subject: subject, textPart: textPart),
-            template: TemplateOptions(),
-            tracking: Tracking(),
-            delivery: DeliveryOptions()
+            content: Content(subject: subject, textPart: textPart)
         )
     }
     
     public init(from: Recipient, to: Recipient, subject: String, htmlPart: String) {
         self.init(
             envelope: Envelope(from: from, to: [to]),
-            content: Content(subject: subject, htmlPart: htmlPart),
-            template: TemplateOptions(),
-            tracking: Tracking(),
-            delivery: DeliveryOptions()
+            content: Content(subject: subject, htmlPart: htmlPart)
         )
     }
 }

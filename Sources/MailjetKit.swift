@@ -36,14 +36,16 @@ public class MailjetKit {
     }
     
     public func send(request: MailjetKitRequest) async -> Result<[ResponseMessage], MailjetKitError> {
+        let headers: HTTPHeaders = [.authorization(username: apiKey, password: apiSecret)]
+
         let response = await session
             .request(
                 Self.requestURL,
                 method: .post,
                 parameters: request,
-                encoder: JSONParameterEncoder.default
+                encoder: JSONParameterEncoder.default,
+                headers: headers
             )
-            .authenticate(username: apiKey, password: apiSecret)
             .serializingMailjetMessages()
             .response
         
